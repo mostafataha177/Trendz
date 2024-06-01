@@ -1,0 +1,76 @@
+<section class="mt-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div
+        class="layout offset-1 col-3 d-flex justify-content-center align-items-center"
+      >
+        <img src="../../assets/logo.png" alt="" />
+      </div>
+      <div class="col-6">
+        <h1 class="text-center text-main">Log In Form</h1>
+        <form
+          [formGroup]="loginForm"
+          class="d-flex flex-column justify-content-center align-items-center"
+          (ngSubmit)="handleform()"
+        >
+          <!-- Email Input -->
+
+          <div class="form__group field mb-2">
+            <input
+              type="input"
+              class="form__field d-block"
+              placeholder="Name"
+              name="email"
+              id="email"
+              formControlName="email"
+            />
+            <label for="email" class="form__label">E-mail</label>
+          </div>
+
+          @if ((loginForm.get("email")?.touched ||
+          loginForm.get("email")?.value.length > 0) &&
+          loginForm.get("email")?.errors) {
+          <div class="errorDiv">
+            @if (loginForm.get("email")?.getError("required")) {
+            <p>Email Is Required</p>
+            } @if (loginForm.get("email")?.getError("email")) {
+            <p>Invalid Format</p>
+            }
+          </div>
+          }
+          <div class="form__group field mb-2">
+            <input
+              type="input"
+              class="form__field"
+              placeholder="Name"
+              name="password"
+              id="password"
+              formControlName="password"
+            />
+            <label for="password" class="form__label">password</label>
+          </div>
+          @if ((loginForm.get("password")?.touched ||
+          loginForm.get("password")?.value.length > 0) &&
+          loginForm.get("password")?.errors) {
+          <div class="errorDiv">
+            @if (loginForm.get("password")?.getError("required")) {
+            <p>password Is Required</p>
+            } @if (loginForm.get("password")?.getError("pattern")) {
+            <p>Password must be at least 6 Characters</p>
+            }
+          </div>
+          }
+          <button [disabled]="loginForm.invalid" class="main-button mt-3">
+            Register @if (isLoading) {<i class="fa-solid fa-spinner fa-spin"></i
+            >}
+          </button>
+          @if (errMsg) {
+          <div class="alert alert-danger py-0 px-2 mt-2">
+            <p>{{ errMsg }}</p>
+          </div>
+          }
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

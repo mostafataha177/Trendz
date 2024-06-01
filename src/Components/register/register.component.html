@@ -1,0 +1,146 @@
+<section class="mt-3">
+  <div class="bgCustom"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div
+        class="layout offset-1 col-3 d-flex justify-content-center align-items-center"
+      >
+        <img src="../../assets/logo.png" alt="" />
+      </div>
+      <div class="col-6">
+        <h1 class="text-center text-main">Registertion Form</h1>
+        <form
+          class="d-flex flex-column justify-content-center align-items-center"
+          [formGroup]="registerForm"
+          (ngSubmit)="handleform()"
+        >
+          <!-- Name Input -->
+          <div class="form__group field mb-2">
+            <input
+              type="text"
+              class="form__field"
+              placeholder="Name"
+              name="name"
+              id="name"
+              formControlName="name"
+            />
+            <label for="name" class="form__label">Name</label>
+          </div>
+          @if ((registerForm.get("name")?.touched ||
+          registerForm.get("name")?.value.length > 0) &&
+          registerForm.get("name")?.errors) {
+          <div class="errorDiv">
+            @if (registerForm.get("name")?.getError("required")) {
+            <p>Name Is Required</p>
+            } @if (registerForm.get("name")?.getError("minlength")) {
+            <p>Min Length Is 3 Characters</p>
+            } @if (registerForm.get("name")?.getError("maxlength")) {
+            <p>Max Length Is 20 Character</p>
+            }
+          </div>
+          }
+          <!-- Email Input -->
+
+          <div class="form__group field mb-2">
+            <input
+              type="input"
+              class="form__field d-block"
+              placeholder="Name"
+              name="email"
+              id="email"
+              formControlName="email"
+            />
+            <label for="email" class="form__label">E-mail</label>
+          </div>
+
+          @if ((registerForm.get("email")?.touched ||
+          registerForm.get("email")?.value.length > 0) &&
+          registerForm.get("email")?.errors) {
+          <div class="errorDiv">
+            @if (registerForm.get("email")?.getError("required")) {
+            <p>Email Is Required</p>
+            } @if (registerForm.get("email")?.getError("email")) {
+            <p>Invalid Format</p>
+            }
+          </div>
+          }
+          <div class="form__group field mb-2">
+            <input
+              type="input"
+              class="form__field"
+              placeholder="Name"
+              name="password"
+              id="password"
+              formControlName="password"
+            />
+            <label for="password" class="form__label">password</label>
+          </div>
+          @if ((registerForm.get("password")?.touched ||
+          registerForm.get("password")?.value.length > 0) &&
+          registerForm.get("password")?.errors) {
+          <div class="errorDiv">
+            @if (registerForm.get("password")?.getError("required")) {
+            <p>password Is Required</p>
+            } @if (registerForm.get("password")?.getError("pattern")) {
+            <p>Password must be at least 6 Characters</p>
+            }
+          </div>
+          }
+          <div class="form__group field mb-2">
+            <input
+              type="input"
+              class="form__field"
+              placeholder="Name"
+              name="rePassword"
+              id="rePassword"
+              formControlName="rePassword"
+            />
+            <label for="rePassword" class="form__label">rePassword</label>
+          </div>
+          @if ((registerForm.get("rePassword")?.touched ||
+          registerForm.get("rePassword")?.value.length > 0) &&
+          registerForm.get("rePassword")?.errors) {
+          <div class="errorDiv">
+            @if (registerForm.get("rePassword")?.getError("required")) {
+            <p>password Is Required</p>
+            } @if (registerForm.get("rePassword")?.getError("pattern")) {
+            <p>Password must be at least 6 Characters</p>
+            }
+          </div>
+          }
+          <div class="form__group field mb-2">
+            <input
+              type="tel"
+              class="form__field"
+              placeholder="Phone"
+              name="phone"
+              id="phone"
+              formControlName="phone"
+            />
+            <label for="phone" class="form__label">Phone</label>
+          </div>
+          @if ((registerForm.get("phone")?.touched ||
+          registerForm.get("phone")?.value.length > 0) &&
+          registerForm.get("phone")?.errors) {
+          <div class="errorDiv">
+            @if (registerForm.get("phone")?.getError("required")) {
+            <p>Phone Is Required</p>
+            } @if (registerForm.get("phone")?.getError("pattern")) {
+            <p>Invalid phone number</p>
+            }
+          </div>
+          }
+          <button [disabled]="registerForm.invalid" class="main-button mt-3">
+            Register @if (isLoading) {<i class="fa-solid fa-spinner fa-spin"></i
+            >}
+          </button>
+          @if (errMsg) {
+          <div class="alert alert-danger py-0 px-2 mt-2">
+            <p>{{ errMsg }}</p>
+          </div>
+          }
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

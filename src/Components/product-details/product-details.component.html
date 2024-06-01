@@ -1,0 +1,62 @@
+<section class="mt-4">
+  @if (product) {
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <img
+          style="border-radius: 25px"
+          class="w-100"
+          [src]="product.imageCover"
+          alt=""
+        />
+      </div>
+      <div class="col-9">
+        <div class="text-center text-main">
+          <h1>{{ product.title }}</h1>
+        </div>
+        <div>
+          <h4 class="d-inline-block text-main">Caegory</h4>
+          <span class="ms-2 h6">{{ product.category.name }}</span>
+        </div>
+        <div>
+          <h4 class="d-inline-block text-main">Description</h4>
+          <br />
+          <span class="ms-2 h6">{{ product.description }}</span>
+        </div>
+        <div class="mt-2">
+          <h4 class="d-inline-block text-main">Price</h4>
+          <span class="ms-2 h6">{{ product.price | currency : "EGP" }}</span>
+        </div>
+        <div>
+          <h4 class="d-inline-block text-main">Brand</h4>
+          <span class="ms-2 h6">{{ product.brand.name }}</span>
+        </div>
+        <div class="separate"></div>
+        <div class="mt-4">
+          <div class="container">
+            <div class="row align-items-center justify-content-center">
+              <div class="col-7">
+                <div class="row">
+                  @for (image of product.images; track $index) {
+                  <div class="col">
+                    <img
+                      class="w-100"
+                      style="border-radius: 50px; height: 150px"
+                      [src]="image"
+                      alt=""
+                    />
+                  </div>
+                  }
+                </div>
+                <div class="text-center mt-3">
+                  <button class="main-button w-25"><b>Add to Cart</b></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</section>

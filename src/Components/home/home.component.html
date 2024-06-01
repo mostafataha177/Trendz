@@ -1,0 +1,50 @@
+<section>
+  <div class="container-fluid">
+    <div class="row row-cols-lg-6 row-cols-md-3 row-cols-sm-2">
+      <div *ngFor="let product of products; let i = index" class="mb-2">
+        <div class="product-card mx-1 p-1">
+          <div role="button" (click)="hadleProductDetails(product.id)">
+            <img
+              style="height: 250px"
+              class="w-100"
+              [src]="product.imageCover"
+              alt=""
+            />
+            <div class="separate"></div>
+            <span><b>Category</b></span>
+            <h3 style="font-size: 13px" class="text-main">
+              {{ product.category.name }}
+            </h3>
+            <h3 style="font-size: 15px">{{ product.title | cutText }}</h3>
+            <div class="d-flex justify-content-between">
+              <span>{{ product.price | currency : "EGP" }}</span>
+              <span
+                >{{ product.ratingsAverage }}
+                <i class="rating-color fa-solid fa-star"></i
+              ></span>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mt-3">
+            <button class="main-button">Add To Cart</button>
+            <div
+              (click)="toggleHeart(product)"
+              class="d-flex align-items-center heartClick"
+            >
+              <i
+                *ngIf="product.heart"
+                style="font-size: 20px; color: #0aad0a"
+                class="fa-solid fa-heart"
+              ></i>
+              <i
+                *ngIf="!product.heart"
+                style="font-size: 20px; color: #0aad0a"
+                class="fa-regular fa-heart"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

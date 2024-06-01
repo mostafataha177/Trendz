@@ -1,0 +1,21 @@
+.separate{
+    height: 2px;
+    width: 100%;
+    background-color: #0aad0a;
+    margin: 10px 0;
+}
+.heartClick{
+    cursor: pointer;
+}
+.product-card {
+    border-radius: 10px;
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid rgba(125, 130, 125, 0.267);
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  
